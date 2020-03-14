@@ -2,7 +2,7 @@ const allPermutation = (str) => {
 
   //If the input is falsy(empty) or not a string
   if (!str || typeof str !== "string"){
-    return "Please enter a string"
+    return "Invalid input. Please enter a string"
   }
   //Else if str has length 1, return str
   else if (str.length < 2){
@@ -12,6 +12,8 @@ const allPermutation = (str) => {
   const result = [];
   for(let i = 0; i < str.length; i += 1){
     const eachLetter = str[i];
+    if (str.indexOf(eachLetter) != i)
+    continue
     const otherLetters = str.slice(0, i) + str.slice(i + 1, str.length);
     result.push(eachLetter)
     for (let permutation of allPermutation(otherLetters)){
